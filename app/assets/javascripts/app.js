@@ -9,24 +9,24 @@ KnoWhere.config(['$stateProvider','$urlRouterProvider',
         templateUrl: 'home/_home.html',
         controller: 'MainCtrl',
 
-        // resolve: {
-        //   postPromise: ['posts', function(posts){
-        //     return posts.getAll();
-        //   }]
-        // }
+        resolve: {
+          jobPromise: ['jobs', function(jobs){
+            return jobs.getAll();
+          }]
+        }
       })
 
-      // .state('posts', {
-      //   url: '/posts/{id}',
-      //   templateUrl: 'posts/_posts.html',
-      //   controller: 'PostsCtrl',
-      //
-      //   resolve: {
-      //     post: ['$stateParams', 'posts', function($stateParams, posts) {
-      //       return posts.get($stateParams.id);
-      //     }]
-      //   }
-      // })
+      .state('jobs', {
+        url: '/jobs/{id}',
+        templateUrl: 'jobs/_jobs.html',
+        controller: 'jobsCtrl',
+
+        resolve: {
+          job: ['$stateParams', 'jobs', function($stateParams, jobs) {
+            return jobs.get($stateParams.id);
+          }]
+        }
+      })
 
       .state('login', {
         url: '/login',

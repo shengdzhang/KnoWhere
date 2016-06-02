@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h1> Hello World </h1>
+  <span>
+    <a href="#/home">Home</a>
+  </span>
+
+  <h3>
+    {{job.priority}}: {{job.title}}, {{job.company}}, {{job.location}}, {{job.found}}
+    posted by <a ng-href="#/users/{{job.user.username}}">{{job.user.username}}</a>
+  </h3>
+</div>
+
+<div ng-repeat="appointment in job.appointments | orderBy:'-priority'">
+  <span class="glyphicon glyphicon-thumbs-up"
+    ng-click="upPriorityAppointment(appointment)"></span>
+  {{appointment.priority}}
+  <span style="font-size:20px; margin-left:10px;">
+    {{appointment.time}}, {{appointment.location}}
+  </span>
+  - by {{appointment.user.username}}
+</div>
+
+<form ng-submit="addAppointment()"
+  style="margin-top:30px;">
+  <h3>Add a new appointment</h3>
+
+  <div class="form-group">
+    <input type="datetime"
+    class="form-control"
+    placeholder="Time"
+    ng-model="time"></input>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+    class="form-control"
+    placeholder="Location"
+    ng-model="location"></input>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Post</button>
+</form>

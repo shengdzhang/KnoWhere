@@ -5,20 +5,24 @@ KnoWhere.controller('MainCtrl', [
 
     $scope.jobs = jobs.jobs;
 
-    // $scope.incrementUpvotes = function(post) {
-    //   posts.upvote(post);
-    // };
-    //
-    // $scope.addPost = function(){
-    //   if(!$scope.title || $scope.title === '') {
-    //      return;
-    //   }
-    //   posts.create({
-    //     title: $scope.title,
-    //     link: $scope.link,
-    //   });
-    //   $scope.title = '';
-    //   $scope.link = '';
-    // };
+    $scope.incrementPriority = function(job) {
+      jobs.upPriority(job);
+    };
+
+    $scope.addJob = function(){
+      if($scope.title === '' || $scope.company === '' || $scope.location === '' || $scope.found === '') {
+         return;
+      }
+      jobs.create({
+        title: $scope.title,
+        company: $scope.company,
+        location: $scope.location,
+        found: $scope.found
+      });
+      $scope.title = '';
+      $scope.company = '';
+      $scope.location = '';
+      $scope.found = '';
+    };
   }
 ]);

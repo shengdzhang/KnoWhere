@@ -4,8 +4,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @job = Job.find(params[:job_id])
-    @appointment = @job.appointments.create(appointment_params)
-    @appointment.user_id = current_user.id
+    @appointment = @job.appointments.create(appointment_params.merge({user_id: current_user.id}))
     if @appointment.save
       render json: @appointment
     end
@@ -30,6 +29,6 @@ class AppointmentsController < ApplicationController
 
   private
   def appointment_params
-    params.require(:appointment).permit(:time, :location)
+    params.require(:appointment).permit(:time, :location, :job_id)
   end
 end

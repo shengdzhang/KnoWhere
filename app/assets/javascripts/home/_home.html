@@ -3,20 +3,20 @@
   <h1>KnoWhere</h1>
 </div>
 
-<!-- <div ng-repeat="job in jobs | orderBy:'-upvotes'">
+<div ng-repeat="job in jobs | orderBy:'-priority'">
   <span class="glyphicon glyphicon-thumbs-up"
-    ng-click="incrementUpvotes(job)">
+    ng-click="incrementPriority(job)">
   </span>
   <span style="font-size:20px; margin-left:10px;">
-      {{job.title}}
-    jobed by <a ng-href="#/users/{{job.user.username}}">{{job.user.username}}</a>
+      {{job.priority}}: {{job.title}}, {{job.company}}, {{job.location}}, {{job.found}}
+    posted by <a ng-href="#/users/{{job.user.username}}">{{job.user.username}}</a>
     <span>
-      <a href="#/jobs/{{job.id}}">Comments</a>
+      <a href="#/jobs/{{job.id}}">Appointments</a>
     </span>
   </span>
-</div> -->
+</div>
 
-<!-- <form ng-submit="addJob()"
+<form ng-submit="addJob()"
   style="margin-top:30px;">
   <h3>Add a new job</h3>
 
@@ -26,11 +26,27 @@
       placeholder="Title"
       ng-model="title"></input>
   </div>
+
   <div class="form-group">
     <input type="text"
     class="form-control"
-    placeholder="Link"
-    ng-model="link"></input>
+    placeholder="Company"
+    ng-model="company"></input>
   </div>
+
+  <div class="form-group">
+    <input type="text"
+    class="form-control"
+    placeholder="Location"
+    ng-model="location"></input>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+    class="form-control"
+    placeholder="Where was it found?"
+    ng-model="found"></input>
+  </div>
+
   <button type="submit" class="btn btn-primary">Post</button>
-</form> -->
+</form>
